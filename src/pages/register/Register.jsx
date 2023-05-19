@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { UserToContext } from '../../provider/UserContext';
 import { updateProfile } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2'
 
 const Register = () => {
     const [error, setError] = useState('');
@@ -28,7 +30,8 @@ const Register = () => {
                     displayName: name,
                     photoURL: photo,
                 });
-                setSuccess('User created successfully.');
+                // setSuccess('User created successfully.');
+                Swal.fire('User created successfully')
                 setError('');
             })
             .catch(error => {
@@ -47,13 +50,13 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" placeholder="name" name='name' className="input input-bordered" />
+                                <input type="text" placeholder="name" name='name' className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" name='email' className="input input-bordered" />
+                                <input type="text" placeholder="email" name='email' className="input input-bordered" required/>
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -65,7 +68,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" placeholder="password" name='password' className="input input-bordered" />
+                                <input type="text" placeholder="password" name='password' className="input input-bordered" required />
                             </div>
 
                             <div className="form-control mt-6">
@@ -74,8 +77,12 @@ const Register = () => {
                             <p>No account ? please signup</p>
                         </form>
                     </div>
+                    <div>
+                        <h1 className='text-center text-red-700'>{error}</h1>
+                    </div>
                 </div>
             </div>
+            
         </div>
     );
 };

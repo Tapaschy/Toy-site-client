@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { UserToContext } from '../../provider/UserContext';
 import app from '../../firebase/firebase.config';
-import { GoogleAuthProvider, getAuth } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
     const [error, setError] = useState('');
@@ -32,6 +33,7 @@ const Login = () => {
                 const loggedInUser=result.user;
                 console.log(loggedInUser);
                 navigate(from,{replace:true});
+                // Swal.fire('Login successfully');
                 setError('');
             })
             .catch(error=>{
@@ -64,7 +66,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" name='email' className="input input-bordered" />
+                                <input type="text" placeholder="email" name='email' className="input input-bordered"  />
                             </div>
                             <div className="form-control">
                                 <label className="label">
@@ -75,8 +77,8 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login" className='btn btn-primary' />
                             </div>
-                            <p>No account ? please signup</p>
-                            <button onSubmit={handleGoogleSignIn} className='btn'>login with Google</button>
+                            <Link to={"/register"}><p>No account ? please signup</p></Link>
+                            <button onClick={handleGoogleSignIn} className='btn'>login with Google</button>
                         </form>
                     </div>
                 </div>

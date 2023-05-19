@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../assets/logo/logo.png'
 import { Link } from 'react-router-dom';
+import { UserToContext } from '../../../provider/UserContext';
 
 const Navigationbar = () => {
+
+    const { user, logOut } = useContext(UserToContext);
+    console.log(user)
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
 
     const navli = <>
         <li><a>Home</a></li>
@@ -24,7 +33,7 @@ const Navigationbar = () => {
                             {navli}
                         </ul>
                     </div>
-                    <a href=""><img src={logo} alt="" className='h-10 w-10'/></a>
+                    <a href=""><img src={logo} alt="" className='h-10 w-10' /></a>
                     <a className="btn btn-ghost normal-case text-xl text-white">DisneyToy<span className='text-secondary'>world</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -33,14 +42,19 @@ const Navigationbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    {
+                        user?<><label className="btn btn-ghost btn-circle avatar tooltip tooltip-left tooltip-secondary" data-tip={user?.displayName}>
+                        <div className="w-12 rounded-full">
+                            <img src={user?.photoURL} />
                         </div>
-                    </label>
-                    <Link to={"/login"}><a className="btn btn-primary">Login</a></Link>
-                    <a className="btn btn-primary">Log out</a>
+                    </label><Link onClick={handleLogout}><a className="btn btn-primary">Log out</a></Link></>:<Link to={"/login"}><a className="btn btn-primary">Login</a></Link>
+                    }
+                    
+                    
+                    
+                
                 </div>
+
             </div>
         </div>
     );
