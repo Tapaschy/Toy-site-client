@@ -14,12 +14,13 @@ const Navigationbar = () => {
     }
 
     const navli = <>
-        <li><a>Home</a></li>
-        <li><a>All Toys</a></li>
-        <li><a>My Toys</a></li>
-        <li><a>Add A Toy</a></li>
-        <li><a>Blogs</a></li>
-        <li><a>Blogs</a></li>
+    
+        <Link to=""><li><a>Home</a></li></Link>
+        <Link to=""><li><a>All Toys</a></li></Link>
+        <Link to=""><li><a>My Toys</a></li></Link>
+        <Link to="/addatoy"><li><a>Add A Toy</a></li></Link>
+        <Link to=""><li><a>Blogs</a></li></Link>
+        <Link to=""><li><a>Blogs</a></li></Link>
     </>
     return (
         <div className='bg-primary'>

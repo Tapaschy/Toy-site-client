@@ -33,7 +33,7 @@ const Login = () => {
                 const loggedInUser=result.user;
                 console.log(loggedInUser);
                 navigate(from,{replace:true});
-                // Swal.fire('Login successfully');
+                Swal.fire('Login successfully');
                 setError('');
             })
             .catch(error=>{
