@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import { UserToContext } from '../../provider/UserContext';
 
 
 const Addtoy = () => {
+    const{user}=useContext(UserToContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
@@ -46,7 +48,7 @@ const Addtoy = () => {
                             </label>
                             <input
                                 className="text-input input input-bordered w-full"
-                                value={"seller"}
+                                value={user.displayName}
                                 {...register("seller")}
                                 placeholder="seller"
                                 defaultValue="Seller name"
@@ -60,7 +62,7 @@ const Addtoy = () => {
                             </label>
                             <input
                                 className="text-input input input-bordered w-full"
-                                value="{email}"
+                                value={user.email}
                                 {...register("email")}
                                 placeholder="email"
                                 defaultValue="email"

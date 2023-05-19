@@ -2,14 +2,16 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-const Toy = () => {
+const Toy = ({toy,filter}) => {
+    console.log(filter)
     return (
         
             <div className="card card-compact w-96 bg-base-100 shadow-xl mb-5">
-                <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
+                <figure><img src={toy.photo} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <h2 className="card-title text-primary">{toy.toyname}</h2>
+                    <p>{toy.description}</p>
+                    <p>{toy.rating}</p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary">Buy Now</button>
                     </div>

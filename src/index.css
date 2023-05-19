@@ -6,3 +6,9 @@
   background-color:#f78da7;
   color: aliceblue;
 }
+.react-tabs__tab--selected{
+  background: #f78da7;
+  border-color: #f78da7;
+  color: #f78da7;
+  border-radius: 5px 5px 0 0;
+}
