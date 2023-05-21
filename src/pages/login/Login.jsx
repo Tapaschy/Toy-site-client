@@ -4,8 +4,10 @@ import { UserToContext } from '../../provider/UserContext';
 import app from '../../firebase/firebase.config';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTItle';
 
 const Login = () => {
+    useTitle('LOGIN')
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const {singIn}=useContext(UserToContext);

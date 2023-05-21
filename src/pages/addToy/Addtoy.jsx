@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
 import { UserToContext } from '../../provider/UserContext';
+import useTitle from '../../hooks/useTItle';
 
 
 const Addtoy = () => {
+    useTitle('ADD A TOY')
     const{user}=useContext(UserToContext)
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 

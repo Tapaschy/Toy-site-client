@@ -1,13 +1,18 @@
 import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Latestblog = () => {
+    {
+        AOS.init();
+      }
     return (
         <div className='mt-5'>
             <h2 className='text-primary text-center font-bold text-5xl mb-5 rounded-xl'>Latest Blog</h2>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto '>
 
 
-                <div className="card w-96 bg-base-100 shadow-xl">
+                <div data-aos="flip-up" className="card w-96 bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10 w-full h-full">
                         <img src="https://i.ibb.co/k00NMbb/mickey-et-ses-amis-figurine-plastique-donald-duck-en-moto-p-image-391972-grande.jpg" alt="Shoes" className="rounded-xl" />
                     </figure>

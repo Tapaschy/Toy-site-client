@@ -3,8 +3,10 @@ import { UserToContext } from '../../provider/UserContext';
 import { updateProfile } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTItle';
 
 const Register = () => {
+    useTitle('REGISTER')
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const { register } = useContext(UserToContext);

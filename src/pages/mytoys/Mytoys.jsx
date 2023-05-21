@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserToContext } from '../../provider/UserContext';
 import Updatetoys from './Updatetoys';
+import useTitle from '../../hooks/useTItle';
 
 const Mytoys = () => {
+    useTitle('MY TOY')
     const [mytoys, settoys] = useState([]);
     const { user } = useContext(UserToContext);
     const [control, setControl] = useState(false);
