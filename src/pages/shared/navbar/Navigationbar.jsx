@@ -16,7 +16,7 @@ const Navigationbar = () => {
     const navli = <>
     
         <Link to=""><li><a>Home</a></li></Link>
-        <Link to=""><li><a>All Toys</a></li></Link>
+        <Link to="/alltoys"><li><a>All Toys</a></li></Link>
         <Link to="/mytoys"><li><a>My Toys</a></li></Link>
         <Link to="/addatoy"><li><a>Add A Toy</a></li></Link>
         <Link to=""><li><a>Blogs</a></li></Link>

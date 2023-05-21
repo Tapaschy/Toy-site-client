@@ -10,17 +10,20 @@ const auth =getAuth(app);
 
 const UserContext = ({children}) => {
 const[user,setUser]=useState(null);
-const[loadding,setLoadding]=useState(true);
+const[loading,setLoading]=useState(true);
     
 const register=(email,password)=>{
+    setLoading(true);
     return createUserWithEmailAndPassword(auth,email,password);
 }
 
 const singIn =(email,password)=>{
+    setLoading(true);
     return signInWithEmailAndPassword(auth,email,password);
 }
 
 const logOut=()=>{
+    setLoading(true);
     return signOut(auth);
 }
 
@@ -30,7 +33,7 @@ useEffect(()=>{
     const unsbuscribe=onAuthStateChanged(auth,currentUser=>{
         console.log(currentUser);
         setUser(currentUser);
-        setLoadding(false);
+        setLoading(false);
     });
     return ()=>{
         unsbuscribe()
@@ -42,7 +45,7 @@ useEffect(()=>{
 
 const authInfo={
     user,
-    loadding,
+    loading,
     register,
     singIn,
     logOut,
