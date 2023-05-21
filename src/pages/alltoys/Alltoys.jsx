@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import Toydetails from './Toydetails';
+import { UserToContext } from '../../provider/UserContext';
+import { Link, useLocation } from 'react-router-dom';
 
 const Alltoys = () => {
     const [alltoys, setalltoy] = useState([]);
+    const {user, loading} = useContext(UserToContext);
+    const location = useLocation()
     // const alltoys=useLoaderData();
     console.log(alltoys)
+
+
+
+
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/toys`)
@@ -62,9 +70,14 @@ const Alltoys = () => {
                                     <td>{toy.price}</td>
                                     <td>{toy.quantity}</td>
                                     <th>
-                                        <Toydetails
+                                    {user?<>  <label htmlFor={toy._id} className="btn btn-secondary">View Details</label>
+                                        
+                                            <Toydetails
                                             key={toy._id}
-                                            toy={toy}></Toydetails>
+                                            toy={toy}>
+
+                                        </Toydetails>
+                                        </>:<><Link to={"/login"} state={{from: location}} replace><a className="btn btn-secondary">View Details</a></Link></>}
                                     </th>
 
                                 </tr>

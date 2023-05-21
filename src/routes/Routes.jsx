@@ -7,6 +7,8 @@ import Addtoy from "../pages/addToy/Addtoy";
 import Mytoys from "../pages/mytoys/Mytoys";
 import Alltoys from "../pages/alltoys/Alltoys";
 import PrivateRoute from "./PrivateRoute";
+import Others from "../layouts/Others";
+import Toydetails from "../pages/alltoys/Toydetails";
 
 const router = createBrowserRouter([
     {
@@ -41,5 +43,17 @@ const router = createBrowserRouter([
         
       ]
     },
+    {
+        path:"/",
+        element:<Others></Others>,
+        children:[
+            
+                {
+                    path: '/details',
+                    element:<Toydetails></Toydetails>,
+                },
+            
+        ]
+    }
   ]);
   export default router;
