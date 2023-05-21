@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserToContext } from '../../provider/UserContext';
-import Singletoy from './Singletoy';
 import Updatetoys from './Updatetoys';
 
 const Mytoys = () => {
@@ -16,7 +15,7 @@ const Mytoys = () => {
                 console.log(data);
                 settoys(data);
             })
-    }, [user])
+    }, [user, control])
 
     // sort
     const [sortOrder, setSortOrder] = useState('desc');
@@ -29,39 +28,61 @@ const Mytoys = () => {
                 console.log(data);
                 settoys(data);
             })
-    }, [sortOrder,user]);
+    }, [sortOrder, user]);
 
     const handleSortOrderChange = () => {
         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
 
     // for update
-    const handleJobUpdate = (data) => {
+    const handletoyUpdate = (data) => {
         fetch(`http://localhost:5000/toys/${data._id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
         })
-          .then((res) => res.json())
-          .then((result) => {
-            if (result.modifiedCount > 0) {
-              setControl(!control);
-            }
-            console.log(result);
-          });
-      };
+            .then((res) => res.json())
+            .then((result) => {
+                if (result.modifiedCount > 0) {
+                    alert('Updated successful');
+                    setControl(!control);
+                }
+                console.log(result);
+            });
+    };
+
+
+    //   delete
+    const handleDelete = (id) => {
+        const proceed = confirm('Are You sure you want to delete');
+        if (proceed) {
+            fetch(`http://localhost:5000/toys/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        alert('deleted successful');
+                        const remaining = mytoys.filter(mytoy => mytoy._id !== id);
+                        settoys(remaining);
+                    }
+                })
+        }
+    }
 
 
     return (
 
         <div>
-            <div>
-                Sort Order:
-                <button onClick={handleSortOrderChange}>
-                    {sortOrder === 'asc' ? 'Ascending' : 'Descending'}
-                </button>
-            </div>
-            <div className="overflow-x-auto w-full container mx-auto">
+
+            <div className="overflow-x-auto w-full container mx-auto mt-5 ">
+                <div className='flex mb-5 items-center align-middle' >
+                    <p className='text-lg font-semibold text-secondary pr-3'>Sort Order By price:</p>
+                    <button onClick={handleSortOrderChange} className='btn-primary btn'>
+                        {sortOrder === 'asc' ? 'Ascending' : 'Descending'}
+                    </button>
+                </div>
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -81,54 +102,44 @@ const Mytoys = () => {
                     <tbody>
                         {
                             mytoys.map(toy => (
-                            
+
                                 <tr>
-                                <td>
-                                    <div className="flex items-center space-x-3">
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
-                                                <img src={toy.photo} />
+                                    <td>
+                                        <div className="flex items-center space-x-3">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle w-12 h-12">
+                                                    <img src={toy.photo} />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className="font-bold">{toy.toyname}</div>
                                             </div>
                                         </div>
-                                        <div>
-                                            <div className="font-bold">{toy.toyname}</div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    {toy.seller}
-                                    <br />
-                                    <span className="badge badge-ghost badge-sm">{toy.email}</span>
-                                </td>
-                                <td>{toy.category}</td>
-                                <td>{toy.price}</td>
-                                <td>{toy.quantity}</td>
-                                <td>{toy.rating}</td>
-                                <td>{toy.description}</td>
-                                <th>
-                                    {/* <button className="btn btn-ghost btn-xs">Edit</button> */}
-                                    {/* The button to open modal */}
-                                    <Updatetoys 
-                                    key={toy._id}
-                                    toy={toy}
-                                    handleJobUpdate={handleJobUpdate}
-                                    ></Updatetoys>
-                                </th>
-                                <th>
-                                    <button className="btn btn-ghost btn-xs">Delete</button>
-                                </th>
-                            </tr>
+                                    </td>
+                                    <td>
+                                        {toy.seller}
+                                        <br />
+                                        <span className="badge badge-ghost badge-sm">{toy.email}</span>
+                                    </td>
+                                    <td>{toy.category}</td>
+                                    <td>{toy.price}</td>
+                                    <td>{toy.quantity}</td>
+                                    <td>{toy.rating}</td>
+                                    <td>{toy.description}</td>
+                                    <th>
+                                        {/* <button className="btn btn-ghost btn-xs">Edit</button> */}
+                                        {/* The button to open modal */}
+                                        <Updatetoys
+                                            key={toy._id}
+                                            toy={toy}
+                                            handletoyUpdate={handletoyUpdate}
+                                        ></Updatetoys>
+                                    </th>
+                                    <th>
+                                        <button onClick={() => handleDelete(toy._id)} className="btn btn-secondary">Delete</button>
+                                    </th>
+                                </tr>
 
-                                
-
-
-                            // <Singletoy
-                            //     key={toy._id}
-                            //     toy={toy}
-                            //     handleJobUpdate={handleJobUpdate}
-                            // ></Singletoy>
-                            
-                            
                             ))
                         }
 
