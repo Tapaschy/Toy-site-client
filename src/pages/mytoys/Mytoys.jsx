@@ -9,7 +9,7 @@ const Mytoys = () => {
     console.log(user?.email)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/mytoys/${user?.email}`)
+        fetch(`https://disney-toy-world-production.up.railway.app/mytoys/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -22,7 +22,7 @@ const Mytoys = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5000/mytoys/${user?.email}/data?sortOrder=${sortOrder}`)
+        fetch(`https://disney-toy-world-production.up.railway.app/mytoys/${user?.email}/data?sortOrder=${sortOrder}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -36,7 +36,7 @@ const Mytoys = () => {
 
     // for update
     const handletoyUpdate = (data) => {
-        fetch(`http://localhost:5000/toys/${data._id}`, {
+        fetch(`https://disney-toy-world-production.up.railway.app/toys/${data._id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -56,7 +56,7 @@ const Mytoys = () => {
     const handleDelete = (id) => {
         const proceed = confirm('Are You sure you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/toys/${id}`, {
+            fetch(`https://disney-toy-world-production.up.railway.app/toys/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -16,7 +16,7 @@ const Alltoys = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toys`)
+        fetch(`https://disney-toy-world-production.up.railway.app/toys`)
             .then((res) => res.json())
             .then((result) => {
                 console.log(result)
@@ -75,7 +75,6 @@ const Alltoys = () => {
                                             <Toydetails
                                             key={toy._id}
                                             toy={toy}>
-
                                         </Toydetails>
                                         </>:<><Link to={"/login"} state={{from: location}} replace><a className="btn btn-secondary">View Details</a></Link></>}
                                     </th>

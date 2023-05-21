@@ -11,7 +11,7 @@ const Category = () => {
     console.log(filteredItems)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/toys`)
+        fetch(`https://disney-toy-world-production.up.railway.app/toys`)
             .then((res) => res.json())
             .then((result) => {
                 settoy(result);

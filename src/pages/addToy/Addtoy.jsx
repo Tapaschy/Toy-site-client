@@ -10,7 +10,7 @@ const Addtoy = () => {
 
     const onSubmit = (data) => {
     
-        fetch("http://localhost:5000/toys", {
+        fetch("https://disney-toy-world-production.up.railway.app/toys", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
