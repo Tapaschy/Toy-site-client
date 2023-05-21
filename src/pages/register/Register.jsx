@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { UserToContext } from '../../provider/UserContext';
 import { updateProfile } from 'firebase/auth';
-import { ToastContainer, toast } from 'react-toastify';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     const [error, setError] = useState('');
@@ -43,7 +43,7 @@ const Register = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content w-3/4">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <h1 className="text-5xl font-bold text-center">Register now!</h1>
+                    <h1 className="text-5xl font-bold text-center text-primary">Register now!</h1>
                     <div className="card-body">
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
@@ -74,7 +74,7 @@ const Register = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" value="Submit" className='btn btn-primary' />
                             </div>
-                            <p>No account ? please signup</p>
+                            <Link to={"/login"}><p>Have acount Please login.</p></Link>
                         </form>
                     </div>
                     <div>

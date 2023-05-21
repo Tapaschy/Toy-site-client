@@ -17,9 +17,11 @@ const Navigationbar = () => {
     
         <Link to=""><li><a>Home</a></li></Link>
         <Link to="/alltoys"><li><a>All Toys</a></li></Link>
-        <Link to="/mytoys"><li><a>My Toys</a></li></Link>
-        <Link to="/addatoy"><li><a>Add A Toy</a></li></Link>
-        <Link to=""><li><a>Blogs</a></li></Link>
+        {
+            user?<><Link to="/mytoys"><li><a>My Toys</a></li></Link>
+            <Link to="/addatoy"><li><a>Add A Toy</a></li></Link></>:<></>
+        }
+        <Link to="/blog"><li><a>Blogs</a></li></Link>
     </>
     return (
         <div className='bg-primary'>

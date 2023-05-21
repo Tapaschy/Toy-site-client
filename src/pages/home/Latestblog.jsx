@@ -4,7 +4,7 @@ const Latestblog = () => {
     return (
         <div className='mt-5'>
             <h2 className='text-primary text-center font-bold text-5xl mb-5 rounded-xl'>Latest Blog</h2>
-            <div className='grid grid-cols-3 gap-4 container mx-auto '>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-4 container mx-auto '>
 
 
                 <div className="card w-96 bg-base-100 shadow-xl">

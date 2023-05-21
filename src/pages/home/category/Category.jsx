@@ -40,7 +40,7 @@ const Category = () => {
 
     return (
         <div className='bg-primary mt-5'>
-            <div className='container mx-auto '>
+            <div className='container mx-auto'>
                 <h1 className='text-center  text-white pt-5 font-bold text-5xl'>Shop by Category</h1>
                 <Tabs forceRenderTabPanel defaultIndex={0} selectedTabClassName="text-white">
                     <TabList>
@@ -53,7 +53,7 @@ const Category = () => {
                                 <Tab >All Toys</Tab>
                             </TabList>
                             <TabPanel>
-                                <div className='grid grid-cols-3 container mx-auto'>
+                                <div className='grid grid-cols-1 md:grid-cols-3 container mx-auto'>
                                     {
                                         filteredItems.map((toy) => (<Toy
                                             key={toy._id}
@@ -72,7 +72,7 @@ const Category = () => {
                                 <Tab onClick={() => handleTab("donaldduck")}>Donald Duck</Tab>
                             </TabList>
                             <TabPanel>
-                                <div className='grid grid-cols-3 container mx-auto'>
+                                <div className='grid grid-cols-1 md:grid-cols-3 container mx-auto'>
                                     {
                                         filteredItems.map((toy) => (<Toy
                                             key={toy._id}
@@ -83,7 +83,7 @@ const Category = () => {
                                 </div>
                             </TabPanel>
                             <TabPanel>
-                                <div className='grid grid-cols-3 container mx-auto'>
+                                <div className='grid grid-cols-1 md:grid-cols-3 container mx-auto'>
                                     {
                                         filteredItems.map((toy) => (<Toy
                                             key={toy._id}
@@ -93,7 +93,7 @@ const Category = () => {
                                 </div>
                             </TabPanel>
                             <TabPanel>
-                                <div className='grid grid-cols-3 container mx-auto'>
+                                <div className='grid grid-cols-1 md:grid-cols-3 container mx-auto'>
                                     {
                                         filteredItems.map((toy) => (<Toy
                                             key={toy._id}

@@ -59,7 +59,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content w-3/4">
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <h1 className="text-5xl font-bold text-center">Login now!</h1>
+                    <h1 className="text-5xl font-bold text-center text-primary">Login now!</h1>
                     <div className="card-body">
                         <form onSubmit={handleLogin}>
                             <div className="form-control">
@@ -77,8 +77,9 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login" className='btn btn-primary' />
                             </div>
+                
+                            <button onClick={handleGoogleSignIn} className='btn btn-primary w-full mt-1 mb-1'>login with Google</button>
                             <Link to={"/register"}><p>No account ? please signup</p></Link>
-                            <button onClick={handleGoogleSignIn} className='btn'>login with Google</button>
                         </form>
                     </div>
                 </div>
