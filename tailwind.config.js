@@ -11,8 +11,8 @@ export default {
     themes: [
       {
         'mytheme': {  
-           'primary' : '#9b51e0',           /* Primary color */
-           'primary-focus' : '#9b51e0',     /* Primary color - focused */
+           'primary' : '#9363B5',           /* Primary color */
+           'primary-focus' : '#9363B5',     /* Primary color - focused */
            'primary-content' : '#ffffff',   /* Foreground content color to use on primary color */
 
            'secondary' : '#f78da7',         /* Secondary color */
