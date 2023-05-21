@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserToContext } from '../../provider/UserContext';
 import Singletoy from './Singletoy';
+import Updatetoys from './Updatetoys';
 
 const Mytoys = () => {
     const [mytoys, settoys] = useState([]);
     const { user } = useContext(UserToContext);
+    const [control, setControl] = useState(false);
     console.log(user?.email)
 
     useEffect(() => {
@@ -27,11 +29,27 @@ const Mytoys = () => {
                 console.log(data);
                 settoys(data);
             })
-    }, [sortOrder]);
+    }, [sortOrder,user]);
 
     const handleSortOrderChange = () => {
         setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
     };
+
+    // for update
+    const handleJobUpdate = (data) => {
+        fetch(`http://localhost:5000/toys/${data._id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.modifiedCount > 0) {
+              setControl(!control);
+            }
+            console.log(result);
+          });
+      };
 
 
     return (
@@ -52,7 +70,9 @@ const Mytoys = () => {
                             <th>Seller</th>
                             <th>Sub-category</th>
                             <th>Price</th>
+                            <th>quantity</th>
                             <th>Rating</th>
+                            <th>description</th>
                             <th>Edit</th>
                             <th>Delete</th>
                             <th></th>
@@ -60,10 +80,56 @@ const Mytoys = () => {
                     </thead>
                     <tbody>
                         {
-                            mytoys.map(toy => (<Singletoy
-                                key={toy._id}
-                                toy={toy}
-                            ></Singletoy>))
+                            mytoys.map(toy => (
+                            
+                                <tr>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={toy.photo} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">{toy.toyname}</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {toy.seller}
+                                    <br />
+                                    <span className="badge badge-ghost badge-sm">{toy.email}</span>
+                                </td>
+                                <td>{toy.category}</td>
+                                <td>{toy.price}</td>
+                                <td>{toy.quantity}</td>
+                                <td>{toy.rating}</td>
+                                <td>{toy.description}</td>
+                                <th>
+                                    {/* <button className="btn btn-ghost btn-xs">Edit</button> */}
+                                    {/* The button to open modal */}
+                                    <Updatetoys 
+                                    key={toy._id}
+                                    toy={toy}
+                                    handleJobUpdate={handleJobUpdate}
+                                    ></Updatetoys>
+                                </th>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">Delete</button>
+                                </th>
+                            </tr>
+
+                                
+
+
+                            // <Singletoy
+                            //     key={toy._id}
+                            //     toy={toy}
+                            //     handleJobUpdate={handleJobUpdate}
+                            // ></Singletoy>
+                            
+                            
+                            ))
                         }
 
                     </tbody>

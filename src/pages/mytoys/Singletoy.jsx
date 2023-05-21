@@ -1,8 +1,9 @@
 import React from 'react';
+import Updatetoys from './Updatetoys';
 
-const Singletoy = ({toy}) => {
+const Singletoy = ({ toy,handleJobUpdate }) => {
     console.log(toy);
-    const{_id,category,description,email,photo,price,quantity,rating,toyname,seller}=toy;
+    const { _id, category, description, email, photo, price, quantity, rating, toyname, seller } = toy;
     return (
         <>
             <tr>
@@ -27,7 +28,14 @@ const Singletoy = ({toy}) => {
                 <td>{price}</td>
                 <td>{rating}</td>
                 <th>
-                    <button className="btn btn-ghost btn-xs">Edit</button>
+                    {/* <button className="btn btn-ghost btn-xs">Edit</button> */}
+                    {/* The button to open modal */}
+                    <label htmlFor="my-modal-6" className="btn">Edit</label>
+                    <Updatetoys 
+                    key={_id}
+                    toy={toy}
+                    handleJobUpdate={handleJobUpdate}
+                    ></Updatetoys>
                 </th>
                 <th>
                     <button className="btn btn-ghost btn-xs">Delete</button>

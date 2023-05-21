@@ -2,8 +2,7 @@ import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
-const Toy = ({toy,filter}) => {
-    console.log(filter)
+const Toy = ({toy}) => {
     return (
         
             <div className="card card-compact w-96 bg-base-100 shadow-xl mb-5">
