@@ -20,7 +20,6 @@ const Navigationbar = () => {
         <Link to="/mytoys"><li><a>My Toys</a></li></Link>
         <Link to="/addatoy"><li><a>Add A Toy</a></li></Link>
         <Link to=""><li><a>Blogs</a></li></Link>
-        <Link to=""><li><a>Blogs</a></li></Link>
     </>
     return (
         <div className='bg-primary'>

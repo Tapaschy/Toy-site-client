@@ -39,71 +39,73 @@ const Category = () => {
     };
 
     return (
-        <div className='container mx-auto'>
-            <h1 className='text-center text-primary font-bold text-3xl'>Shop by Category</h1>
-            <Tabs forceRenderTabPanel defaultIndex={0} selectedTabClassName="text-primary">
-                <TabList>
-                    <Tab onClick={() => handleTab("")}>All toys</Tab>
-                    <Tab onClick={() => handleTab("goofy")}>Category</Tab>
-                </TabList>
-                <TabPanel>
-                    <Tabs forceRenderTabPanel>
-                        <TabList>
-                            <Tab >All Toys</Tab>
-                        </TabList>
-                        <TabPanel>
-                            <div className='grid grid-cols-3 container mx-auto'>
-                                {
-                                    filteredItems.map((toy) => (<Toy
-                                        key={toy._id}
-                                        toy={toy}
-                                    ></Toy>))
-                                }
-                            </div>
-                        </TabPanel>
-                    </Tabs>
-                </TabPanel>
-                <TabPanel>
-                    <Tabs forceRenderTabPanel>
-                        <TabList >
-                            <Tab onClick={() => handleTab("goofy")}>Goofy</Tab>
-                            <Tab onClick={() => handleTab("mickeymouse")}>Mickey Mouse</Tab>
-                            <Tab onClick={() => handleTab("donaldduck")}>Donald Duck</Tab>
-                        </TabList>
-                        <TabPanel>
-                            <div className='grid grid-cols-3 container mx-auto'>
-                                {
-                                    filteredItems.map((filter) => (<Toy
-                                        key={filter._id}
-                                        toy={filter}
-                                    ></Toy>))
+        <div className='bg-primary mt-5'>
+            <div className='container mx-auto '>
+                <h1 className='text-center  text-white pt-5 font-bold text-5xl'>Shop by Category</h1>
+                <Tabs forceRenderTabPanel defaultIndex={0} selectedTabClassName="text-white">
+                    <TabList>
+                        <Tab onClick={() => handleTab("")}>All toys</Tab>
+                        <Tab onClick={() => handleTab("goofy")}>Category</Tab>
+                    </TabList>
+                    <TabPanel>
+                        <Tabs forceRenderTabPanel>
+                            <TabList>
+                                <Tab >All Toys</Tab>
+                            </TabList>
+                            <TabPanel>
+                                <div className='grid grid-cols-3 container mx-auto'>
+                                    {
+                                        filteredItems.map((toy) => (<Toy
+                                            key={toy._id}
+                                            toy={toy}
+                                        ></Toy>))
+                                    }
+                                </div>
+                            </TabPanel>
+                        </Tabs>
+                    </TabPanel>
+                    <TabPanel>
+                        <Tabs forceRenderTabPanel>
+                            <TabList >
+                                <Tab onClick={() => handleTab("goofy")}>Goofy</Tab>
+                                <Tab onClick={() => handleTab("mickeymouse")}>Mickey Mouse</Tab>
+                                <Tab onClick={() => handleTab("donaldduck")}>Donald Duck</Tab>
+                            </TabList>
+                            <TabPanel>
+                                <div className='grid grid-cols-3 container mx-auto'>
+                                    {
+                                        filteredItems.map((toy) => (<Toy
+                                            key={toy._id}
+                                            toy={toy}
+                                        ></Toy>))
 
-                                }
-                            </div>
-                        </TabPanel>
-                        <TabPanel>
-                            <div className='grid grid-cols-3 container mx-auto'>
-                                {
-                                    filteredItems.map((toy) => (<Toy
-                                        key={toy._id}
-                                        toy={toy}
-                                    ></Toy>))
-                                }
-                            </div>
-                        </TabPanel>
-                        <TabPanel>
-                            <div className='grid grid-cols-3 container mx-auto'>
-                                {
-                                    filteredItems.map((toy) => (<Toy
-                                        key={toy._id}
-                                        toy={toy}
-                                    ></Toy>))
-                                }
-                            </div>
-                        </TabPanel>
-                    </Tabs>
-                </TabPanel>
-            </Tabs>
+                                    }
+                                </div>
+                            </TabPanel>
+                            <TabPanel>
+                                <div className='grid grid-cols-3 container mx-auto'>
+                                    {
+                                        filteredItems.map((toy) => (<Toy
+                                            key={toy._id}
+                                            toy={toy}
+                                        ></Toy>))
+                                    }
+                                </div>
+                            </TabPanel>
+                            <TabPanel>
+                                <div className='grid grid-cols-3 container mx-auto'>
+                                    {
+                                        filteredItems.map((toy) => (<Toy
+                                            key={toy._id}
+                                            toy={toy}
+                                        ></Toy>))
+                                    }
+                                </div>
+                            </TabPanel>
+                        </Tabs>
+                    </TabPanel>
+                </Tabs>
+            </div>
         </div>
     );
 };
