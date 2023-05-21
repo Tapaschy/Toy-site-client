@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .navbar-center>ul>li>a:hover{
   background-color:#f78da7;
   color: aliceblue;
